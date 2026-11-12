@@ -1,0 +1,4 @@
+-r requirements-advanced.txt
+torch==2.5.1
+transformers==4.46.3
+sentencepiece==0.2.0

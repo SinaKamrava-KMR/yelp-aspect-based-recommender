@@ -1,0 +1,68 @@
+{
+  "project": {
+    "name": "NLP_HW3",
+    "seed": 42
+  },
+  "data": {
+    "city": "Philadelphia",
+    "category_labels": ["Restaurants", "Food"],
+    "split_date": "2021-01-01",
+    "min_interactions": 5,
+    "min_train_rows_for_dev_user": 3,
+    "raw_business_file": "data/raw/yelp_academic_dataset_business.json",
+    "raw_review_file": "data/raw/yelp_academic_dataset_review.json",
+    "processed_dir": "data/processed"
+  },
+  "nlp": {
+    "model": "en_core_web_md",
+    "model_version": "3.7.1",
+    "aspects": ["food", "service", "ambiance", "price", "location"],
+    "similarity_threshold": 0.35,
+    "batch_size": 1000,
+    "n_process": 4
+  },
+  "matrix_factorization": {
+    "factors": 32,
+    "epochs": 20,
+    "learning_rate": 0.01,
+    "regularization": 0.05,
+    "seed": 42,
+    "fit_split": "train"
+  },
+  "hybrid": {
+    "alpha": 0.7,
+    "normalization": "global",
+    "cf_rating_min": 1.0,
+    "cf_rating_max": 5.0,
+    "aspect_score_min": -1.0,
+    "aspect_score_max": 1.0
+  },
+  "ranking": {
+    "top_k": 10,
+    "fallback_m": 5,
+    "abstention_threshold": 0.3,
+    "exclude_seen_items": true
+  },
+  "sentiment": {
+    "method": "vader",
+    "epsilon": 1e-9,
+    "dependency_rules": ["amod", "copular_complement"]
+  },
+  "evaluation": {
+    "k": 10,
+    "trace_test_users": 20
+  },
+  "advanced": {
+    "alpha_grid": [0.0, 0.25, 0.5, 0.7, 0.8, 0.9, 0.95, 1.0],
+    "min_interactions_grid": [3, 5, 10, 20],
+    "abstention_threshold_grid": [0.1, 0.2, 0.3, 0.4, 0.5],
+    "confidence_weighted": true,
+    "aspect_shrinkage": 5.0,
+    "popularity_weight": 0.15,
+    "selection_order": ["ndcg@10", "hr@10", "rmse"],
+    "transformer_model": "yangheng/deberta-v3-base-absa-v1.1"
+  },
+  "output": {
+    "results_dir": "results"
+  }
+}

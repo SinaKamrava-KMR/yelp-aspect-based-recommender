@@ -1,0 +1,28 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Yelp raw data is licensed for academic use and must not be submitted.
+data/*
+!data/raw/README.md
+HW3_data/Yelp_JSON/
+yelp_academic_dataset_*.json
+*.zip
+
+# Downloaded NLP assets and generated outputs.
+resources/nltk_data/
+results/*
+!results/.gitkeep
+
+.venv-3.11.0rc2-backup/
+
+# Local environments and development files
+.venv*/
+.idea/
+.env
+.env.*
+*.whl
+*.log
+*.sqlite3
+*.bak

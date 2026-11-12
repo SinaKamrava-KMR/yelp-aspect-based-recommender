@@ -1,0 +1,2 @@
+-r requirements.txt
+gensim==4.3.3
